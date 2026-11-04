@@ -83,29 +83,29 @@
       <td class="hash-cell">22818ef0752ac4f03bc54c6e1b7802bc6f0ae106f2fd7887e0839853cc0d77f3</td>
     </tr>
     <tr>
-      <td><strong>Datos Volátiles</strong> (salida/)</td>
-      <td>Respuesta en vivo hacia disco secundario D:</td>
-      <td>4 ficheros txt</td>
-      <td class="hash-cell">01-fecha.txt, 06-netstat.txt, 10-red.txt, 12-procesos.txt</td>
-    </tr>
-    <tr>
       <td><strong>Disco Virtual VMDK</strong> (Original)</td>
       <td>Apagado abrupto (BitLocker: 0% descifrado)</td>
       <td>32 GB asignados</td>
       <td class="hash-cell">f98ca9c5585c0fd6605d3563c0b52d7b9addfa8c3930f0568459722cf49cd6a6</td>
     </tr>
     <tr>
-      <td><strong>Imagen Forense E01</strong> (Copia de trabajo)</td>
+      <td><strong>Imagen Forense E01</strong> (Copia de trabajo disco)</td>
       <td>AccessData FTK Imager v3.4.0.5 (Segmentada)</td>
       <td>~4.98 GB</td>
       <td class="hash-cell">MD5: d23cd66a7475d2a47dbaffd960fd1f80<br>SHA-1: 5d36b49702c656dbb3997b77b88df2bc3c5a68f6</td>
+    </tr>
+    <tr>
+      <td><strong>Pendrive Escena E01</strong> (Evidencia física)</td>
+      <td>AccessData FTK Imager (Physical Drive)</td>
+      <td>~26.2 GB</td>
+      <td class="hash-cell">MD5: ebb9488b0e337f05db11d14acc26be54<br>SHA-1: c1870f834ae3d71afc72252b7132a5792ae06471</td>
     </tr>
   </tbody>
 </table>
 
 <div class="section-title">3. Certificación de Integridad y Clausura</div>
 <p style="font-size: 8.5pt; text-align: justify; color: #334155;">
-Se certifica que la adquisición de los artefactos se realizó siguiendo escrupulosamente el orden de volatilidad (RFC 3227) y el principio de mínima alteración de la prueba. Los hashes de verificación fueron calculados inmediatamente tras la extracción y contrastados con éxito. Se adjunta el manifiesto <code>hashes.sha256</code> con todas las sumas de control.
+Se certifica que la adquisición de los artefactos se realizó siguiendo escrupulosamente el orden de volatilidad (RFC 3227) y el principio de mínima alteración de la prueba. Los datos volátiles de red y procesos quedan preservados inmutables en el core dump de memoria RAM. Los hashes de verificación fueron calculados inmediatamente tras la extracción y contrastados con éxito en <code>hashes.sha256</code>.
 </p>
 
 <table style="margin-top: 15px;">
