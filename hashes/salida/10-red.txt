@@ -1,0 +1,25 @@
+
+Windows IP Configuration
+
+   Host Name . . . . . . . . . . . . : FORENSE-06
+   Primary Dns Suffix  . . . . . . . : 
+   Node Type . . . . . . . . . . . . : Hybrid
+   IP Routing Enabled. . . . . . . . : No
+   WINS Proxy Enabled. . . . . . . . : No
+
+Ethernet adapter Local Area Connection:
+
+   Connection-specific DNS Suffix  . : 
+   Description . . . . . . . . . . . : Intel(R) PRO/1000 MT Desktop Adapter
+   Physical Address. . . . . . . . . : 08-00-27-8B-D4-5C
+   DHCP Enabled. . . . . . . . . . . : Yes
+   Autoconfiguration Enabled . . . . : Yes
+   Link-local IPv6 Address . . . . . : fe80::a0b1:5542:7f6a:2e4d%11(Preferred) 
+   IPv4 Address. . . . . . . . . . . : 10.0.2.15(Preferred) 
+   Subnet Mask . . . . . . . . . . . : 255.255.255.0
+   Lease Obtained. . . . . . . . . . : Tuesday, November 3, 2026 3:58:12 PM
+   Lease Expires . . . . . . . . . . : Wednesday, November 4, 2026 3:58:12 PM
+   Default Gateway . . . . . . . . . : 10.0.2.2
+   DHCP Server . . . . . . . . . . . : 10.0.2.2
+   DNS Servers . . . . . . . . . . . : 10.0.2.3
+   NetBIOS over Tcpip. . . . . . . . : Enabled
