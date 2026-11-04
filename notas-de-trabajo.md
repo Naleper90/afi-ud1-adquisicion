@@ -81,6 +81,29 @@
 - **Fijación de Hash previo del disco original:** Inmediatamente tras el apagado, se calculó el SHA-256 del disco `.vmdk`:
   `f98ca9c5585c0fd6605d3563c0b52d7b9addfa8c3930f0568459722cf49cd6a6`
 
+### 2.7 Adquisición Post-Mortem del Disco Virtual (Formato Forense E01)
+- **Hora:** 21:28 h · 04/11/2026
+- **Herramienta utilizada:** AccessData FTK Imager v3.4.0.5.
+- **Origen de adquisición:** `FORENSIC_10_disk0.vmdk` (imagen lógica del disco preservada sin arranques).
+- **Destino y formato:** `hashes/FORENSIC_10_disk0.E01` (Expert Witness Format, segmentado en bloques de 1.500 MB).
+- **Metadatos de la evidencia incorporados en la cabecera E01:**
+  - Case Number: `AFI-UD1`
+  - Evidence Number: `EVIDENCIA-01`
+  - Unique Description: `Disco FORENSIC_10 post-mortem`
+  - Examiner: `Natalia Alejo Perez`
+- **Verificación automática de integridad post-adquisición:**
+  - **MD5 calculado y verificado:** `d23cd66a7475d2a47dbaffd960fd1f80` (`Match`)
+  - **SHA-1 calculado y verificado:** `5d36b49702c656dbb3997b77b88df2bc3c5a68f6` (`Match`)
+  - Sectores totales verificados: `67.108.864` (32.768 MB).
+- **Ficheros generados:**
+  - `FORENSIC_10_disk0.E01` (1.572.749.374 bytes)
+  - `FORENSIC_10_disk0.E02` (1.572.799.453 bytes)
+  - `FORENSIC_10_disk0.E03` (1.572.729.802 bytes)
+  - `FORENSIC_10_disk0.E04` (264.633.827 bytes)
+  - `FORENSIC_10_disk0.E01.txt` (Registro oficial de adquisición y geometría)
+- **Evidencia gráfica:**
+  - `capturas/08-adquisicion-ftk-e01-verificada.png`
+
 ---
 
 ## 3. Estado Actual de Hashes de Integridad (`hashes/hashes.sha256`)
@@ -88,4 +111,9 @@
 0401711ec86b3cbe66844d451064a0726325230105a0149aef2e7c5ab3a24e90 *FORENSIC_10-ram.raw
 22818ef0752ac4f03bc54c6e1b7802bc6f0ae106f2fd7887e0839853cc0d77f3 *red.pcap
 f98ca9c5585c0fd6605d3563c0b52d7b9addfa8c3930f0568459722cf49cd6a6 *FORENSIC_10_disk0.vmdk
+9b928de0e6cfcc153b519b53adb50bd0e9ec6746e211ee1869baa867238b48a9 *FORENSIC_10_disk0.E01
+5389b28197d3a54d04c3a1b12723b59143710d7c7967ee89e4d7f903613db9a1 *FORENSIC_10_disk0.E02
+b503ecd888033603a6eeaf21dc961339d7087256e2834c503d49ae85232d6528 *FORENSIC_10_disk0.E03
+0917e7c4e82255a80ade219cf9aa1d50600518f7fa7cbd6f1ac95b392596b98f *FORENSIC_10_disk0.E04
+14eb27dcdb93fb32ace9a02c47fb0b064b401f608b11a7863f8c1c11314219a4 *FORENSIC_10_disk0.E01.txt
 ```

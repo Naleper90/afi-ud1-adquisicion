@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<title>Acta de Adquisición de Evidencias Digitales</title>
+<style>
+  @page { size: A4; margin: 18mm; }
+  body { font-family: 'Segoe UI', Arial, sans-serif; color: #1e293b; line-height: 1.4; font-size: 10.5pt; margin: 0; }
+  .header { border-bottom: 2px solid #0f172a; padding-bottom: 10px; margin-bottom: 16px; display: flex; justify-content: space-between; align-items: flex-end; }
+  .header h1 { margin: 0; font-size: 16pt; text-transform: uppercase; color: #0f172a; letter-spacing: 0.5px; }
+  .header .meta { font-size: 8.5pt; color: #64748b; font-weight: 600; text-align: right; }
+  .badge { display: inline-block; background: #dcfce7; color: #15803d; padding: 2px 7px; border-radius: 4px; font-weight: bold; font-size: 8.5pt; margin-bottom: 4px; }
+  .section-title { font-size: 11pt; font-weight: bold; color: #0f172a; border-left: 4px solid #16a34a; padding-left: 8px; margin: 14px 0 6px 0; }
+  table { width: 100%; border-collapse: collapse; margin-bottom: 12px; font-size: 9pt; }
+  th, td { border: 1px solid #cbd5e1; padding: 5px 8px; text-align: left; }
+  th { background-color: #f1f5f9; color: #334155; font-weight: 600; }
+  .hash-cell { font-family: 'Consolas', monospace; font-size: 7.5pt; word-break: break-all; }
+  .signature-box { height: 45px; background-color: #fafafa; }
+  .print-btn { background: #16a34a; color: white; border: none; padding: 9px 16px; font-size: 10.5pt; border-radius: 6px; cursor: pointer; font-weight: bold; margin-bottom: 15px; }
+  @media print { .print-btn { display: none; } }
+</style>
+</head>
+<body>
+
+<button class="print-btn" onclick="window.print()">🖨️ Imprimir / Guardar como PDF</button>
+
+<div class="header">
+  <div>
+    <span class="badge">ACTA OFICIAL DE INTERVENCIÓN PERICIAL</span>
+    <h1>Acta de Adquisición Forense</h1>
+    <div style="font-size: 9.5pt; color: #475569;">IES Rafael Alberti · Curso de Especialización en Ciberseguridad</div>
+  </div>
+  <div class="meta">
+    <div><strong>Caso:</strong> Bahía Sistemas / Almadraba Diseño</div>
+    <div><strong>Referencia:</strong> AFI-UD1-202611</div>
+    <div><strong>Fecha de intervención:</strong> 03/11/2026 - 04/11/2026</div>
+  </div>
+</div>
+
+<div class="section-title">1. Datos Generales de la Intervención y Autoría</div>
+<table>
+  <tr>
+    <td style="width: 25%;"><strong>Perito Responsable:</strong></td>
+    <td style="width: 25%;">Natalia Alejo Pérez (Alumno 20)</td>
+    <td style="width: 25%;"><strong>Marca Personal Forense:</strong></td>
+    <td style="width: 25%;"><code>AFI-NataliaAlejo-20261103</code></td>
+  </tr>
+  <tr>
+    <td><strong>Entorno / Escena:</strong></td>
+    <td>Cuarto de Informática · Almadraba Diseño</td>
+    <td><strong>Equipo Investigado:</strong></td>
+    <td>Host Windows comprometido (FORENSE-06 / FORENSIC_10)</td>
+  </tr>
+  <tr>
+    <td><strong>Estado inicial del host:</strong></td>
+    <td>Encendido (adquisición en vivo prioritaria)</td>
+    <td><strong>Desfase temporal reloj:</strong></td>
+    <td>0 minutos (sincronizado con estación pericial)</td>
+  </tr>
+</table>
+
+<div class="section-title">2. Relación de Evidencias Adquiridas y Metodología Aplicada</div>
+<table>
+  <thead>
+    <tr>
+      <th style="width: 15%;">Evidencia</th>
+      <th style="width: 20%;">Técnica / Herramienta</th>
+      <th style="width: 15%;">Tamaño</th>
+      <th>Hash de Integridad (SHA-256)</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><strong>Memoria RAM</strong> (FORENSIC_10-ram.raw)</td>
+      <td>VirtualBox Hypervisor Core Dump (0% impacto)</td>
+      <td>1.21 GB</td>
+      <td class="hash-cell">0401711ec86b3cbe66844d451064a0726325230105a0149aef2e7c5ab3a24e90</td>
+    </tr>
+    <tr>
+      <td><strong>Traza de Red</strong> (red.pcap)</td>
+      <td>VBoxManage nictrace1 (TAP exterior)</td>
+      <td>2.24 MB</td>
+      <td class="hash-cell">22818ef0752ac4f03bc54c6e1b7802bc6f0ae106f2fd7887e0839853cc0d77f3</td>
+    </tr>
+    <tr>
+      <td><strong>Datos Volátiles</strong> (salida/)</td>
+      <td>Respuesta en vivo hacia disco secundario D:</td>
+      <td>4 ficheros txt</td>
+      <td class="hash-cell">01-fecha.txt, 06-netstat.txt, 10-red.txt, 12-procesos.txt</td>
+    </tr>
+    <tr>
+      <td><strong>Disco Virtual VMDK</strong> (Original)</td>
+      <td>Apagado abrupto (BitLocker: 0% descifrado)</td>
+      <td>32 GB asignados</td>
+      <td class="hash-cell">f98ca9c5585c0fd6605d3563c0b52d7b9addfa8c3930f0568459722cf49cd6a6</td>
+    </tr>
+    <tr>
+      <td><strong>Imagen Forense E01</strong> (Copia de trabajo)</td>
+      <td>AccessData FTK Imager v3.4.0.5 (Segmentada)</td>
+      <td>~4.98 GB</td>
+      <td class="hash-cell">MD5: d23cd66a7475d2a47dbaffd960fd1f80<br>SHA-1: 5d36b49702c656dbb3997b77b88df2bc3c5a68f6</td>
+    </tr>
+  </tbody>
+</table>
+
+<div class="section-title">3. Certificación de Integridad y Clausura</div>
+<p style="font-size: 8.5pt; text-align: justify; color: #334155;">
+Se certifica que la adquisición de los artefactos se realizó siguiendo escrupulosamente el orden de volatilidad (RFC 3227) y el principio de mínima alteración de la prueba. Los hashes de verificación fueron calculados inmediatamente tras la extracción y contrastados con éxito. Se adjunta el manifiesto <code>hashes.sha256</code> con todas las sumas de control.
+</p>
+
+<table style="margin-top: 15px;">
+  <tr>
+    <td style="width: 50%; text-align: center; font-weight: bold; background: #f8fafc;">Perito Adquirente</td>
+    <td style="width: 50%; text-align: center; font-weight: bold; background: #f8fafc;">Visto Bueno / Instructor</td>
+  </tr>
+  <tr>
+    <td class="signature-box" style="text-align: center; vertical-align: bottom; font-size: 8pt; color: #64748b;">
+      Fdo.: Natalia Alejo Pérez<br>Fecha: 04/11/2026
+    </td>
+    <td class="signature-box" style="text-align: center; vertical-align: bottom; font-size: 8pt; color: #64748b;">
+      Fdo.: Tutor / Profesor Forense AFI<br>Fecha: ____ / ____ / 2026
+    </td>
+  </tr>
+</table>
+
+</body>
+</html>

@@ -1,0 +1,47 @@
+﻿Created By AccessData® FTK® Imager 3.4.0.5 
+
+Case Information: 
+Acquired using: ADI3.4.0.5
+Case Number: AFI-UD1
+Evidence Number: EVIDENCIA-01
+Unique description: Disco FORENSIC_10 post-mortem
+Examiner: Natalia Alejo Perez
+Notes:  
+
+--------------------------------------------------------------
+
+Information for C:\Users\esana\Desktop\afi-ud1-adquisicion\hashes\FORENSIC_10_disk0:
+
+Physical Evidentiary Item (Source) Information:
+[Device Info]
+ Source Type: Physical
+[Drive Geometry]
+ Cylinders: 16.383
+ Heads: 16
+ Sectors per Track: 63
+ Bytes per Sector: 512
+ Sector Count: 67.108.864
+[Physical Drive Information]
+ Drive Interface Type: ide
+[Image]
+ Image Type: VMWare Virtual Disk
+ Source data size: 32768 MB
+ Sector count:    67108864
+[Computed Hashes]
+ MD5 checksum:    d23cd66a7475d2a47dbaffd960fd1f80
+ SHA1 checksum:   5d36b49702c656dbb3997b77b88df2bc3c5a68f6
+
+Image Information:
+ Acquisition started:   Wed Nov 04 21:28:33 2026
+ Acquisition finished:  Wed Nov 04 21:32:16 2026
+ Segment list:
+  C:\Users\esana\Desktop\afi-ud1-adquisicion\hashes\FORENSIC_10_disk0.E01
+  C:\Users\esana\Desktop\afi-ud1-adquisicion\hashes\FORENSIC_10_disk0.E02
+  C:\Users\esana\Desktop\afi-ud1-adquisicion\hashes\FORENSIC_10_disk0.E03
+  C:\Users\esana\Desktop\afi-ud1-adquisicion\hashes\FORENSIC_10_disk0.E04
+
+Image Verification Results:
+ Verification started:  Wed Nov 04 21:32:16 2026
+ Verification finished: Wed Nov 04 21:36:34 2026
+ MD5 checksum:    d23cd66a7475d2a47dbaffd960fd1f80 : verified
+ SHA1 checksum:   5d36b49702c656dbb3997b77b88df2bc3c5a68f6 : verified
