@@ -101,9 +101,29 @@
   - `FORENSIC_10_disk0.E03` (1.572.729.802 bytes)
   - `FORENSIC_10_disk0.E04` (264.633.827 bytes)
   - `FORENSIC_10_disk0.E01.txt` (Registro oficial de adquisición y geometría)
-- **Evidencia gráfica:**
+- **Evidencias gráficas:**
   - `capturas/08-adquisicion-ftk-e01-verificada.png`
   - `capturas/09-marca-personal-en-disco-e01.png` (Verificación de `marca-nataliaalejo.txt` en `C:\Users\Administrador\Desktop` dentro del E01)
+
+### 2.8 Adquisición Post-Mortem del Pendrive Encontrado en la Escena (Formato E01)
+- **Hora:** 23:05 h · 04/11/2026
+- **Herramienta utilizada:** AccessData FTK Imager v3.4.0.5.
+- **Origen de adquisición:** Disco físico `\\.\PHYSICALDRIVE1` (`General UDisk USB Device`, 31 GB, S/N: `2107221816162859250002`).
+- **Destino y formato:** `hashes/PENDRIVE_ESCENA.E01` (formato E01 segmentado en fragmentos de 1.500 MB).
+- **Metadatos periciales introducidos:**
+  - Case Number: `AFI-UD1`
+  - Evidence Number: `EVIDENCIA-02`
+  - Unique Description: `Pendrive escena del crimen`
+  - Examiner: `Natalia Alejo Perez`
+  - Notes: `Adquisicion fisica post-mortem verificada`
+- **Resultados de la verificación de integridad:**
+  - **MD5 calculado y verificado:** `ebb9488b0e337f05db11d14acc26be54` (`Match`)
+  - **SHA-1 calculado y verificado:** `c1870f834ae3d71afc72252b7132a5792ae06471` (`Match`)
+  - Sectores totales leídos: `61.440.000` sectores.
+  - Sectores defectuosos (Bad Sectors): `0` (No bad sectors found).
+- **Ficheros generados:** Segmentos `PENDRIVE_ESCENA.E01` hasta `PENDRIVE_ESCENA.E17` y log pericial `PENDRIVE_ESCENA.E01.txt`.
+- **Evidencia gráfica:**
+  - `capturas/10-adquisicion-pendrive-ftk-verificada.png`
 
 ---
 

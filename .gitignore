@@ -1,0 +1,31 @@
+# ------------------------------------------------------------------------------
+# BLINDAJE FORENSE: PROHIBIDO SUBIR EVIDENCIAS BINARIAS PESADAS A GIT
+# Incumplir esto supone calificación de 0 según la normativa oficial de entrega
+# ------------------------------------------------------------------------------
+
+# Imágenes forenses de disco y pendrive (EWF / Raw / Virtual)
+*.E0*
+*.E1*
+*.E2*
+*.raw
+*.dmp
+*.vmdk
+*.vdi
+*.iso
+*.img
+
+# Capturas de tráfico de red
+*.pcap
+*.pcapng
+*.cap
+
+# Archivos de volcado de triaje pesados
+*.zip
+*.7z
+*.tar
+*.gz
+
+# Archivos temporales y cachés
+.DS_Store
+Thumbs.db
+desktop.ini
