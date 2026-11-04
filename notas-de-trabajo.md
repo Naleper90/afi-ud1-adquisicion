@@ -103,6 +103,7 @@
   - `FORENSIC_10_disk0.E01.txt` (Registro oficial de adquisición y geometría)
 - **Evidencia gráfica:**
   - `capturas/08-adquisicion-ftk-e01-verificada.png`
+  - `capturas/09-marca-personal-en-disco-e01.png` (Verificación de `marca-nataliaalejo.txt` en `C:\Users\Administrador\Desktop` dentro del E01)
 
 ---
 
