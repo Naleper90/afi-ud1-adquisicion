@@ -1,0 +1,61 @@
+﻿Created By AccessData® FTK® Imager 3.4.0.5 
+
+Case Information: 
+Acquired using: ADI3.4.0.5
+Case Number: AFI-UD1
+Evidence Number: EVIDENCIA-02
+Unique description: Pendrive escena del crimen
+Examiner: Natalia Alejo Perez
+Notes: Adquisicion fisica post-mortem verificada
+
+--------------------------------------------------------------
+
+Information for C:\Users\esana\Desktop\afi-ud1-adquisicion\hashes\PENDRIVE_ESCENA:
+
+Physical Evidentiary Item (Source) Information:
+[Device Info]
+ Source Type: Physical
+[Drive Geometry]
+ Cylinders: 3.824
+ Tracks per Cylinder: 255
+ Sectors per Track: 63
+ Bytes per Sector: 512
+ Sector Count: 61.440.000
+[Physical Drive Information]
+ Drive Model: General UDisk USB Device
+ Drive Serial Number: 2107221816162859250002
+ Drive Interface Type: USB
+ Removable drive: True
+ Source data size: 30000 MB
+ Sector count:    61440000
+[Computed Hashes]
+ MD5 checksum:    ebb9488b0e337f05db11d14acc26be54
+ SHA1 checksum:   c1870f834ae3d71afc72252b7132a5792ae06471
+
+Image Information:
+ Acquisition started:   Wed Nov 04 23:07:41 2026
+ Acquisition finished:  Wed Nov 04 23:31:28 2026
+ Segment list:
+  C:\Users\esana\Desktop\afi-ud1-adquisicion\hashes\PENDRIVE_ESCENA.E01
+  C:\Users\esana\Desktop\afi-ud1-adquisicion\hashes\PENDRIVE_ESCENA.E02
+  C:\Users\esana\Desktop\afi-ud1-adquisicion\hashes\PENDRIVE_ESCENA.E03
+  C:\Users\esana\Desktop\afi-ud1-adquisicion\hashes\PENDRIVE_ESCENA.E04
+  C:\Users\esana\Desktop\afi-ud1-adquisicion\hashes\PENDRIVE_ESCENA.E05
+  C:\Users\esana\Desktop\afi-ud1-adquisicion\hashes\PENDRIVE_ESCENA.E06
+  C:\Users\esana\Desktop\afi-ud1-adquisicion\hashes\PENDRIVE_ESCENA.E07
+  C:\Users\esana\Desktop\afi-ud1-adquisicion\hashes\PENDRIVE_ESCENA.E08
+  C:\Users\esana\Desktop\afi-ud1-adquisicion\hashes\PENDRIVE_ESCENA.E09
+  C:\Users\esana\Desktop\afi-ud1-adquisicion\hashes\PENDRIVE_ESCENA.E10
+  C:\Users\esana\Desktop\afi-ud1-adquisicion\hashes\PENDRIVE_ESCENA.E11
+  C:\Users\esana\Desktop\afi-ud1-adquisicion\hashes\PENDRIVE_ESCENA.E12
+  C:\Users\esana\Desktop\afi-ud1-adquisicion\hashes\PENDRIVE_ESCENA.E13
+  C:\Users\esana\Desktop\afi-ud1-adquisicion\hashes\PENDRIVE_ESCENA.E14
+  C:\Users\esana\Desktop\afi-ud1-adquisicion\hashes\PENDRIVE_ESCENA.E15
+  C:\Users\esana\Desktop\afi-ud1-adquisicion\hashes\PENDRIVE_ESCENA.E16
+  C:\Users\esana\Desktop\afi-ud1-adquisicion\hashes\PENDRIVE_ESCENA.E17
+
+Image Verification Results:
+ Verification started:  Wed Nov 04 23:31:28 2026
+ Verification finished: Wed Nov 04 23:35:33 2026
+ MD5 checksum:    ebb9488b0e337f05db11d14acc26be54 : verified
+ SHA1 checksum:   c1870f834ae3d71afc72252b7132a5792ae06471 : verified
