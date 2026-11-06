@@ -22,18 +22,56 @@
 - **Hora:** 15:30 h
 - **Acción:** Inspección visual y documentación técnica del pendrive encontrado antes de su conexión. Se fotografiaron sus características físicas (pendrive giratorio rojo/metálico) y se registraron sus propiedades de hardware en la estación pericial: fabricante genérico (`General UDisk USB Device`), número de serie `2107221816162859250002`, formateado en `exFAT`.
 - **Evidencias gráficas:**
-  - `capturas/01-pendrive-foto.png`
-  - `capturas/02-pendrive-propiedades-hardware.png`
-  - `capturas/03-pendrive-capacidad-exfat.png`
+  <p align="center">
+    <img src="capturas/01-pendrive-foto.png" alt="Inspección física del pendrive de la escena" width="550" />
+  </p>
+  <p align="center">
+    <img src="capturas/02-pendrive-propiedades-hardware.png" alt="Propiedades de hardware y número de serie" width="650" />
+  </p>
+  <p align="center">
+    <img src="capturas/03-pendrive-capacidad-exfat.png" alt="Capacidad y formato de archivos exFAT" width="650" />
+  </p>
 
 ### 2.2 Configuración del Medio de Respuesta y Red
 - **Hora:** 15:42 h
 - **Acción:** Siguiendo las directrices del enunciado para optimizar el almacenamiento y preservar los medios físicos externos, se configuró un segundo disco virtual dedicado (`USB_RESPUESTA.vdi`, 25 GB) sobre la controladora SAS de la máquina `FORENSIC_10`. Este disco actúa como el "disco de respuesta" para alojar las herramientas forenses y recibir todas las salidas sin escribir en el disco del sistema (`FORENSIC_10_disk0.vmdk`). Se inicializó en MBR y se formateó en NTFS con la etiqueta `RESPUESTA (D:)`.
 - **Captura de tráfico de red (TAP):** Activación de la traza de red en modo monitor desde el exterior mediante comando VBoxManage:
-  ```bash
+  ```
+
+---
+
+## 4. Verificación de Integridad Cruzada en Pareja (25/25 OK)
+
+Se realizó la verificación formal de todas las evidencias volcadas sobre el soporte de custodia USB en la estación de trabajo de **Eduardo Moreno Rodríguez** (`ASUS@LAPTOP-INN5P1GR`), ejecutando el comando de comprobación en entorno Git Bash:
+
+```bash
+cd /e/hashes && sha256sum -c hashes.sha256
+```
+
+- **Resultado:** **25/25 ficheros devolvieron `OK` con 0 errores y 0 avisos de advertencia**, ratificando la perfecta correspondencia matemática y la ausencia total de corrupción de datos durante el traspaso físico de la prueba.
+
+<p align="center">
+  <img src="capturas/11-verificacion-hashes-sha256-ok.png" alt="Verificación exitosa de los 25 hashes SHA-256 en máquina de destino" width="700" />
+</p>bash
   VBoxManage modifyvm "FORENSIC_10" --nictracefile1 "hashes/red.pcap"
   VBoxManage modifyvm "FORENSIC_10" --nictrace1 on
   ```
+
+---
+
+## 4. Verificación de Integridad Cruzada en Pareja (25/25 OK)
+
+Se realizó la verificación formal de todas las evidencias volcadas sobre el soporte de custodia USB en la estación de trabajo de **Eduardo Moreno Rodríguez** (`ASUS@LAPTOP-INN5P1GR`), ejecutando el comando de comprobación en entorno Git Bash:
+
+```bash
+cd /e/hashes && sha256sum -c hashes.sha256
+```
+
+- **Resultado:** **25/25 ficheros devolvieron `OK` con 0 errores y 0 avisos de advertencia**, ratificando la perfecta correspondencia matemática y la ausencia total de corrupción de datos durante el traspaso físico de la prueba.
+
+<p align="center">
+  <img src="capturas/11-verificacion-hashes-sha256-ok.png" alt="Verificación exitosa de los 25 hashes SHA-256 en máquina de destino" width="700" />
+</p>
 
 ### 2.3 Arranque y Fijación de la Marca de Autoría
 - **Hora del sistema virtual:** 3:58 PM (15:58 h) · 11/3/2026
@@ -44,7 +82,9 @@
   2. Apertura del Bloc de notas (`notepad`) con la marca personal `AFI-NataliaAlejo-20261103`, dejándolo en memoria activa sin guardar para garantizar su persistencia en el posterior volcado de RAM.
   3. Creación del archivo testigo `marca-nataliaalejo.txt` en el Escritorio del equipo y réplica en la raíz del pendrive físico de la escena.
 - **Evidencia gráfica:**
-  - `capturas/04-estado-inicial-marca-ram.png`
+  <p align="center">
+    <img src="capturas/04-estado-inicial-marca-ram.png" alt="Inyección de marca pericial en memoria activa" width="650" />
+  </p>
 
 ### 2.4 Adquisición Forense de la Memoria RAM (En Vivo)
 - **Hora:** 17:29 h
@@ -55,7 +95,9 @@
   `0401711ec86b3cbe66844d451064a0726325230105a0149aef2e7c5ab3a24e90`
 - **Verificación de la marca del perito en la RAM:** Búsqueda en texto UTF-16 en el volcado de memoria. Se localizó con éxito la cadena `AFI-NataliaAlejo-20261103` en el offset de bytes `276165056`.
 - **Evidencia gráfica:**
-  - `capturas/05-verificacion-marca-ram.png`
+  <p align="center">
+    <img src="capturas/05-verificacion-marca-ram.png" alt="Verificación de la marca pericial en el offset de memoria RAM" width="650" />
+  </p>
 
 ### 2.5 Recolección de Datos Volátiles
 - **Hora:** 17:56 h
@@ -67,7 +109,9 @@
   - `10-red.txt`: Configuración completa de interfaces IP, gateways y servidores DNS (`ipconfig /all`).
   - `12-procesos.txt`: Listado completo de procesos en ejecución del atacante (`tasklist`).
 - **Evidencia gráfica:**
-  - `capturas/06-datos-volatiles-salida.png`
+  <p align="center">
+    <img src="capturas/06-datos-volatiles-salida.png" alt="Recolección de datos volátiles hacia la unidad de respuesta" width="650" />
+  </p>
 
 ### 2.6 Comprobación de Cifrado de Discos y Apagado Forense
 - **Hora:** 17:59 h
@@ -76,7 +120,9 @@
     - Volumen `C:` (Sistema): `Conversion Status: Fully Decrypted`, `Percentage Encrypted: 0%`, `Protection Status: Protection Off`.
     - Volumen `D:` (Respuesta): `Conversion Status: Fully Decrypted`, `Protection Off`.
 - **Evidencia gráfica:**
-  - `capturas/07-comprobacion-cifrado-bitlocker.png`
+  <p align="center">
+    <img src="capturas/07-comprobacion-cifrado-bitlocker.png" alt="Comprobación de ausencia de cifrado BitLocker" width="650" />
+  </p>
 - **Decisión de apagado:** Al confirmarse la ausencia total de cifrado de volumen (lo que descarta el riesgo de bloqueo de particiones tras reinicio), se procedió al **apagado inmediato por hardware virtual (`poweroff`)** a las 18:00 h, garantizando que el sistema no ejecute scripts de apagado ni modifique registros temporales en el disco `.vmdk`.
 - **Cierre de captura de red:** Se detuvo la traza TAP. Fichero consolidado: `hashes/red.pcap` (2.241.370 bytes, SHA-256: `22818ef0752ac4f03bc54c6e1b7802bc6f0ae106f2fd7887e0839853cc0d77f3`).
 - **Fijación de Hash previo del disco original:** Inmediatamente tras el apagado, se calculó el SHA-256 del disco `.vmdk`:
@@ -103,8 +149,12 @@
   - `FORENSIC_10_disk0.E04` (264.633.827 bytes)
   - `FORENSIC_10_disk0.E01.txt` (Registro oficial de adquisición y geometría)
 - **Evidencias gráficas:**
-  - `capturas/08-adquisicion-ftk-e01-verificada.png`
-  - `capturas/09-marca-personal-en-disco-e01.png` (Verificación de `marca-nataliaalejo.txt` en `C:\Users\Administrador\Desktop` dentro del E01)
+  <p align="center">
+    <img src="capturas/08-adquisicion-ftk-e01-verificada.png" alt="Verificación íntegra de adquisición E01 del disco en FTK Imager" width="650" />
+  </p>
+  <p align="center">
+    <img src="capturas/09-marca-personal-en-disco-e01.png" alt="Verificación de marca de agua pericial en disco montado" width="650" />
+  </p>
 
 ### 2.8 Adquisición Post-Mortem del Pendrive Encontrado en la Escena (Formato E01)
 - **Hora:** 23:05 h · 04/11/2026
@@ -124,14 +174,32 @@
   - Sectores defectuosos (Bad Sectors): `0` (No bad sectors found).
 - **Ficheros generados:** Segmentos `PENDRIVE_ESCENA.E01` hasta `PENDRIVE_ESCENA.E17` y log pericial `PENDRIVE_ESCENA.E01.txt`.
 - **Evidencia gráfica:**
-  - `capturas/10-adquisicion-pendrive-ftk-verificada.png`
+  <p align="center">
+    <img src="capturas/10-adquisicion-pendrive-ftk-verificada.png" alt="Adquisición física de pendrive en FTK Imager con 0 bad sectors" width="650" />
+  </p>
 
 ---
 
 ## 3. Estado Actual de Hashes de Integridad (`hashes/hashes.sha256`)
 > **Nota de trazabilidad pericial:** El archivo `hashes/hashes.sha256` contiene única y exclusivamente las sumas de control de los artefactos y evidencias que se transfieren físicamente en el soporte de custodia al perito receptor (Eduardo Moreno). El hash previo del disco lógico `.vmdk` original (`f98ca9c5585c0fd6605d3563c0b52d7b9addfa8c3930f0568459722cf49cd6a6`) se conserva documentado en el apartado 2.6 de estas notas como testigo inmutable pre-adquisición, excluyéndose del archivo de verificación del pendrive al haberse entregado su imagen forense de trabajo en formato E01 (`FORENSIC_10_disk0.E01` a `.E04`) según directrices del caso.
 
-```text
+```
+
+---
+
+## 4. Verificación de Integridad Cruzada en Pareja (25/25 OK)
+
+Se realizó la verificación formal de todas las evidencias volcadas sobre el soporte de custodia USB en la estación de trabajo de **Eduardo Moreno Rodríguez** (`ASUS@LAPTOP-INN5P1GR`), ejecutando el comando de comprobación en entorno Git Bash:
+
+```bash
+cd /e/hashes && sha256sum -c hashes.sha256
+```
+
+- **Resultado:** **25/25 ficheros devolvieron `OK` con 0 errores y 0 avisos de advertencia**, ratificando la perfecta correspondencia matemática y la ausencia total de corrupción de datos durante el traspaso físico de la prueba.
+
+<p align="center">
+  <img src="capturas/11-verificacion-hashes-sha256-ok.png" alt="Verificación exitosa de los 25 hashes SHA-256 en máquina de destino" width="700" />
+</p>text
 0401711ec86b3cbe66844d451064a0726325230105a0149aef2e7c5ab3a24e90 *FORENSIC_10-ram.raw
 22818ef0752ac4f03bc54c6e1b7802bc6f0ae106f2fd7887e0839853cc0d77f3 *red.pcap
 95c1959031dcf31a44e56d1f53fc6fc8fcad82f56a31f042303715686f5ae841 *FORENSIC_10.vbox
@@ -161,3 +229,19 @@ fdc4e072fedc45bfd8ca1746b4ca9c9010b08ce363904ff7a9fda7fe69877bf5 *PENDRIVE_ESCEN
 fe44711c4ea2ff2f7294c46f791ed1f88862b7d6823f70fa24aa8f52c94d79a9 *PENDRIVE_ESCENA.E17
 c1cd05171a868b78803139384df1f46add3a8dde03506dabb0fb91ce1440dec6 *PENDRIVE_ESCENA.E01.txt
 ```
+
+---
+
+## 4. Verificación de Integridad Cruzada en Pareja (25/25 OK)
+
+Se realizó la verificación formal de todas las evidencias volcadas sobre el soporte de custodia USB en la estación de trabajo de **Eduardo Moreno Rodríguez** (`ASUS@LAPTOP-INN5P1GR`), ejecutando el comando de comprobación en entorno Git Bash:
+
+```bash
+cd /e/hashes && sha256sum -c hashes.sha256
+```
+
+- **Resultado:** **25/25 ficheros devolvieron `OK` con 0 errores y 0 avisos de advertencia**, ratificando la perfecta correspondencia matemática y la ausencia total de corrupción de datos durante el traspaso físico de la prueba.
+
+<p align="center">
+  <img src="capturas/11-verificacion-hashes-sha256-ok.png" alt="Verificación exitosa de los 25 hashes SHA-256 en máquina de destino" width="700" />
+</p>
