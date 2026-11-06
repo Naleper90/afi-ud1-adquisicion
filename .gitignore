@@ -39,3 +39,7 @@ find_coords.js
 extract_edu.js
 firma-natalia.png
 firma-edu.svg
+firma-natalia.svg
+
+# Fuentes HTML de maquetación de actas (solo se entregan los PDFs compilados)
+*.html

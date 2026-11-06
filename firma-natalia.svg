@@ -1,8 +1,0 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 250 80" width="180" height="50">
-  <!-- Firma pericial estilizada de Natalia Alejo -->
-  <path d="M 20 60 Q 25 20, 32 15 Q 38 12, 40 45 L 43 18 Q 45 10, 52 48 L 56 32 Q 62 25, 70 38 Q 78 50, 85 35 T 95 38 Q 102 30, 110 40 Q 118 45, 128 32 Q 138 20, 142 55 L 148 25 Q 155 18, 160 42 Q 165 52, 175 36" fill="none" stroke="#1d4ed8" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
-  <!-- Bucle inferior y rúbrica final -->
-  <path d="M 35 48 C 60 70, 120 72, 195 45 C 215 38, 225 32, 210 48 C 190 68, 140 75, 80 65" fill="none" stroke="#1d4ed8" stroke-width="1.8" stroke-linecap="round"/>
-  <!-- Punto pericial -->
-  <circle cx="218" cy="42" r="2.2" fill="#1d4ed8" />
-</svg>
