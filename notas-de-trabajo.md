@@ -183,23 +183,7 @@ cd /e/hashes && sha256sum -c hashes.sha256
 ## 3. Estado Actual de Hashes de Integridad (`hashes/hashes.sha256`)
 > **Nota de trazabilidad pericial:** El archivo `hashes/hashes.sha256` contiene única y exclusivamente las sumas de control de los artefactos y evidencias que se transfieren físicamente en el soporte de custodia al perito receptor (Eduardo Moreno). El hash previo del disco lógico `.vmdk` original (`f98ca9c5585c0fd6605d3563c0b52d7b9addfa8c3930f0568459722cf49cd6a6`) se conserva documentado en el apartado 2.6 de estas notas como testigo inmutable pre-adquisición, excluyéndose del archivo de verificación del pendrive al haberse entregado su imagen forense de trabajo en formato E01 (`FORENSIC_10_disk0.E01` a `.E04`) según directrices del caso.
 
-```
-
----
-
-## 4. Verificación de Integridad Cruzada en Pareja (25/25 OK)
-
-Se realizó la verificación formal de todas las evidencias volcadas sobre el soporte de custodia USB en la estación de trabajo de **Eduardo Moreno Rodríguez** (`ASUS@LAPTOP-INN5P1GR`), ejecutando el comando de comprobación en entorno Git Bash:
-
-```bash
-cd /e/hashes && sha256sum -c hashes.sha256
-```
-
-- **Resultado:** **25/25 ficheros devolvieron `OK` con 0 errores y 0 avisos de advertencia**, ratificando la perfecta correspondencia matemática y la ausencia total de corrupción de datos durante el traspaso físico de la prueba.
-
-<p align="center">
-  <img src="capturas/11-verificacion-hashes-sha256-ok.png" alt="Verificación exitosa de los 25 hashes SHA-256 en máquina de destino" width="700" />
-</p>text
+```text
 0401711ec86b3cbe66844d451064a0726325230105a0149aef2e7c5ab3a24e90 *FORENSIC_10-ram.raw
 22818ef0752ac4f03bc54c6e1b7802bc6f0ae106f2fd7887e0839853cc0d77f3 *red.pcap
 95c1959031dcf31a44e56d1f53fc6fc8fcad82f56a31f042303715686f5ae841 *FORENSIC_10.vbox
