@@ -59,7 +59,8 @@
 
 ### 2.5 Recolección de Datos Volátiles
 - **Hora:** 17:56 h
-- **Herramienta utilizada:** Comandos nativos de respuesta a incidentes volcados hacia la unidad de respuesta `D:\salida\`.
+- **Herramienta utilizada:** Script pericial oficial de la práctica (`respuesta-en-vivo.ps1`) y comandos nativos del sistema volcados hacia la unidad de respuesta externa `D:\salida\`.
+- **Justificación metodológica (RFC 3227 y mínima alteración):** Siguiendo el principio de mínima alteración de la RFC 3227, se priorizó la ejecución de un triaje ligero por consola junto con la extracción pasiva de memoria RAM completa y el disco físico íntegro en formato E01, frente al despliegue de suites invasivas de espacio de usuario (como agentes pesados de Velociraptor o KAPE en vivo). De este modo se evitó la sobreescritura de sectores no asignados, la alteración del archivo de paginación (`pagefile.sys`) y la polución del registro de Windows durante la recolección, delegando la extracción profunda de artefactos a la fase de análisis post-mortem sobre la copia de trabajo E01.
 - **Artefactos adquiridos:**
   - `01-fecha.txt`: Registro de fecha y hora local del sistema.
   - `06-netstat.txt`: Conexiones TCP/UDP activas y mapeo de procesos con PIDs (`netstat -ano`).
