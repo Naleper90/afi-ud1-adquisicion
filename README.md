@@ -5,7 +5,7 @@
 - **Curso:** Curso de Especialización en Ciberseguridad
 - **Centro Educativo:** IES Rafael Alberti
 - **Caso Pericial:** Bahía Sistemas / Almadraba Diseño
-- **Estación Investigada:** `FORENSIC_10` (Windows 10 Pro / Dominio de Trabajo)
+- **Estación Investigada:** `FORENSIC_10` (Windows 10 Pro / Grupo de Trabajo `FORENSICS`)
 - **Perito Receptor / Custodio:** Eduardo Moreno Rodríguez (`Edu DAM`)
 - **Fecha de Intervención:** 3 al 5 de noviembre de 2026
 
@@ -15,10 +15,10 @@
 
 Este repositorio contiene la memoria técnica, registros de integridad y documentación legal del procedimiento de adquisición forense en vivo y post-mortem ejecutado sobre la estación de trabajo comprometida y el soporte extraíble localizado en el cuarto de informática de Almadraba Diseño.
 
-El procedimiento se ha desarrollado en estricto cumplimiento del **orden de volatilidad (RFC 3227)** y las normas internacionales de aseguramiento pericial **UNE 71506:2013** e **ISO/IEC 27037:2012**.
+El procedimiento se ha desarrollado siguiendo el **orden de volatilidad (RFC 3227)** y las normas internacionales de aseguramiento pericial **UNE 71506:2013** e **ISO/IEC 27037:2012**.
 
 ### 🏆 Hitos y Métricas de Calidad Obtenidas:
-- **Impacto 0% en Espacio de Usuario:** Extracción de memoria RAM física (1,21 GB) realizada a nivel de hipervisor (`debugvm dumpvmcore`), evitando la alteración de procesos volátiles.
+- **Mínimo Impacto en Espacio de Usuario:** Extracción de memoria RAM física (1,21 GB) realizada a nivel de hipervisor (`debugvm dumpvmcore`), evitando la alteración de procesos volátiles.
 - **Marca de Autoría Verificada:** Localización matemática de la cadena testigo `AFI-NataliaAlejo-20261103` en el offset exacto `276165056` (0x10760000) del volcado de RAM y réplica en disco montado.
 - **Adquisición EWF (E01) sin Errores:** Adquisición física completa del disco de sistema (`FORENSIC_10_disk0.E01` a `.E04`) y del pendrive de la escena (`PENDRIVE_ESCENA.E01` a `.E17`) en FTK Imager v3.4.0.5 arrojando **0 bad sectors** y correspondencia de hashes MD5 y SHA-1 (`Match`).
 - **Verificación Cruzada 100% Exitosa:** Comprobación formal ejecutada en Git Bash por el compañero receptor Eduardo Moreno (`ASUS@LAPTOP-INN5P1GR`): **28/28 ficheros devolvieron `OK` con 0 errores y 0 warnings**.
@@ -28,7 +28,7 @@ El procedimiento se ha desarrollado en estricto cumplimiento del **orden de vola
 
 ## 📊 Inventario General de Evidencias Digitales
 
-| ID Evidencia | Soporte / Fichero | Formato / Técnica | Tamaño Real | Hash de Integridad SHA-256 |
+| ID Evidencia | Soporte / Fichero | Formato / Técnica | Tamaño Real | Hash de Integridad SHA-256 (en las imágenes E01, el del primer segmento; el resto, en `hashes.sha256`) |
 | :--- | :--- | :--- | :---: | :--- |
 | **EV-RAM-01** | `FORENSIC_10-ram.raw` | Volcado RAM (Hypervisor) | 1,21 GB | `0401711ec86b3cbe66844d451064a0726325230105a0149aef2e7c5ab3a24e90` |
 | **EV-NET-02** | `red.pcap` | Captura Tráfico TAP Red | 2,24 MB | `22818ef0752ac4f03bc54c6e1b7802bc6f0ae106f2fd7887e0839853cc0d77f3` |
