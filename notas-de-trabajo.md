@@ -285,11 +285,11 @@ Se dejan aquí, aunque no afecten a la integridad de las evidencias, las inciden
 
 ---
 
-## 7. Fe de Erratas del Registro de Custodia
+## 7. Corrección del Registro de Custodia (Versión 2)
 
-El `registro-custodia.pdf` ya estaba firmado por ambos peritos cuando se detectaron las siguientes discrepancias entre sus valores y los ficheros reales. Para no alterar un documento firmado, **no se modifica el PDF** y se deja constancia aquí de los valores correctos, contrastados con los ficheros reales y con los registros de FTK Imager:
+El `registro-custodia.pdf` de este repositorio es la **versión 2**, rectificada y firmada el 11/11/2026 por ambos peritos, que **sustituye a la versión 1** firmada el 06/11/2026. La versión 1 se conserva en el historial del repositorio. La versión 2 lo indica en su cabecera. La perita adquirente firmó con su firma y el perito receptor firmó a mano sobre el PDF. Las discrepancias detectadas en la versión 1 entre sus valores y los ficheros reales, contrastados con los registros de FTK Imager y con el manifiesto, son estas:
 
-| Campo del registro de custodia | Valor que aparece en el PDF | Valor correcto | Fuente de verificación |
+| Campo del registro de custodia | Valor en la versión 1 | Valor en la versión 2 (correcto) | Fuente de verificación |
 | :--- | :--- | :--- | :--- |
 | SHA-256 del `.vmdk` previo | `da15d0eb…` | `f98ca9c5585c0fd6605d3563c0b52d7b9addfa8c3930f0568459722cf49cd6a6` | Apartado 2.6 y recomprobación del 11/11/2026 |
 | Tamaño de `FORENSIC_10-ram.raw` | 1.298.544.640 bytes | 1.214.117.728 bytes | Fichero original y apartado 2.4 |
@@ -301,9 +301,12 @@ El `registro-custodia.pdf` ya estaba firmado por ambos peritos cuando se detecta
 | Orden de las fases en la tabla | Triaje en vivo antes que la RAM | RAM (17:29 h) antes que el triaje (17:56 h) | Apartados 2.4 y 2.5 |
 | Número de registros del manifiesto `hashes.sha256` | 25 registros | 28 registros | `hashes/hashes.sha256` |
 | Resultado de la verificación del perito receptor (transferencia 1) | 25/25 ficheros `OK` | 28/28 ficheros `OK` | Apartado 4 y captura 13 |
+| Técnica del triaje en vivo (hoja 1, fase de triaje) | «Script PowerShell / Volatilidad» | Script `respuesta-en-vivo.ps1` y comandos nativos del sistema (no se usó Volatility) | Apartado 2.5 |
 | Garantía de inmutabilidad (hoja 1, apartado 2) | «…mediante bloqueadores de escritura…» | No se conserva constancia de que se utilizara bloqueo de escritura en la adquisición del pendrive | Apartado 6, incidencia 5 |
 
-El resto de los datos del registro (identificadores de evidencia, SHA-256 de los ficheros y transferencias firmadas) es correcto y coincide con `hashes/hashes.sha256`.
+**Origen de las discrepancias en hashes, tamaños y recuento:** En la versión 1, los SHA-1 de las dos imágenes E01, el SHA-256 truncado del `.vmdk`, los tamaños en bytes de `FORENSIC_10-ram.raw` y `red.pcap` y el recuento «25/25» se escribieron sin consultar los ficheros reales ni los logs de FTK Imager, sin ejecutar ningún comando de cálculo de hash y sin advertir de su carácter provisional. El registro se firmó sin contrastar esos valores con la evidencia, y las discrepancias se detectaron el 11/11/2026 al verificarlos. Los valores válidos son los certificados por FTK Imager en `FORENSIC_10_disk0.E01.txt` y `PENDRIVE_ESCENA.E01.txt` y los del manifiesto `hashes.sha256`, comprobado sobre los 28 ficheros reales.
+
+El resto de los datos del registro (identificadores de evidencia, SHA-256 de los ficheros, fechas de las transferencias 1 y 2) es correcto y coincide con `hashes/hashes.sha256`.
 
 **Rectificación del acta de adquisición:** El `acta-adquisicion.pdf` se rectificó el 11/11/2026 (consta en su cabecera, y sustituye a la de 04/11/2026) para incorporar el apartado 2, «Cronología de Acciones», con la hora de cada paso y la mención del disco virtual utilizado como unidad de respuesta. Las evidencias, las herramientas y los hashes del resto del acta no han cambiado.
 

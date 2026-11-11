@@ -22,7 +22,7 @@ El procedimiento se ha desarrollado siguiendo el **orden de volatilidad (RFC 322
 - **Marca de autoría:** Localización de la cadena testigo `AFI-NataliaAlejo-20261103` en el offset exacto `276165056` (0x10760000) del volcado de RAM y réplica en disco montado.
 - **Imágenes E01:** Adquisición física completa del disco de sistema (`FORENSIC_10_disk0.E01` a `.E04`) y del pendrive de la escena (`PENDRIVE_ESCENA.E01` a `.E17`) en FTK Imager v3.4.0.5 arrojando **0 bad sectors** y correspondencia de hashes MD5 y SHA-1 (`Match`).
 - **Verificación de hashes:** Comprobación ejecutada en Git Bash por el compañero receptor Eduardo Moreno (`ASUS@LAPTOP-INN5P1GR`): **28/28 ficheros devolvieron `OK`**.
-- **Cadena de custodia:** Registro de 3 páginas con transferencia al perito receptor y devolución, firmado por ambos peritos. Sus discrepancias con los ficheros reales se corrigen en la fe de erratas (enlace 6).
+- **Cadena de custodia:** Registro de 3 páginas con transferencia al perito receptor y devolución, firmado por ambos peritos. Es la versión 2, rectificada el 11/11/2026; las correcciones respecto a la versión 1 constan en el apartado 7 de las notas (enlace 6).
 
 ---
 
@@ -46,7 +46,7 @@ El repositorio respeta escrupulosamente la jerarquía requerida por la cátedra 
 ```text
 afi-ud1-adquisicion/
 ├── README.md               # Portada oficial, resumen ejecutivo y enlaces periciales
-├── notas-de-trabajo.md     # Cuaderno de bitácora paso a paso con las 13 capturas incrustadas, incidencias y fe de erratas
+├── notas-de-trabajo.md     # Cuaderno de bitácora paso a paso con las 13 capturas incrustadas, incidencias y correcciones
 ├── acta-adquisicion.pdf    # Acta oficial de intervención forense debidamente cumplimentada y firmada
 ├── registro-custodia.pdf   # Registro de cadena de custodia de 3 páginas con doble transferencia y firmas
 ├── hashes/                 # Manifiesto hashes.sha256, scripts de respuesta en vivo y logs FTK
@@ -70,4 +70,4 @@ afi-ud1-adquisicion/
 3. 🤝 **[Registro de Cadena de Custodia (3 Páginas)](./registro-custodia.pdf)**: Fichas técnicas de evidencias, transferencia de depósito al perito receptor Eduardo Moreno Rodríguez y devolución de cierre.
 4. 🔍 **[Manifiesto de Integridad Criptográfica](./hashes/hashes.sha256)**: Tabla de sumas de comprobación SHA-256 en rutas relativas.
 5. 📸 **[Galería de Evidencias Gráficas](./capturas/)**: Archivo visual con las 13 capturas periciales del caso.
-6. ✏️ **[Incidencias, Limitaciones y Fe de Erratas](./notas-de-trabajo.md#6-incidencias-y-limitaciones)**: Registro de las incidencias del procedimiento y de las correcciones al registro de custodia firmado (apartados 6 y 7 de las notas).
+6. ✏️ **[Incidencias, Limitaciones y Correcciones](./notas-de-trabajo.md#6-incidencias-y-limitaciones)**: Registro de las incidencias del procedimiento y de las correcciones de la versión 2 del registro de custodia (apartados 6 y 7 de las notas).
