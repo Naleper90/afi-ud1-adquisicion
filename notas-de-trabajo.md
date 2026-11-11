@@ -22,7 +22,7 @@
 
 ## 2. Registro Cronológico de Acciones Paso a Paso (Orden de Volatilidad)
 
-El procedimiento pericial se organizó de forma estricta respetando el orden de volatilidad establecido por la **RFC 3227**:
+El procedimiento pericial se organizó siguiendo el orden de volatilidad establecido por la **RFC 3227**:
 1. Registros volátiles en memoria física (RAM) y conexiones activas.
 2. Tráfico de red en tránsito.
 3. Estado de procesos y tablas de enrutamiento.
@@ -62,7 +62,7 @@ flowchart TD
 ### 2.2 Configuración del Medio de Respuesta y Captura de Red
 - **Hora:** 15:42 h · 03/11/2026
 - **Acción:** Siguiendo las mejores prácticas forenses para optimizar el almacenamiento y evitar escrituras involuntarias en los discos del caso, se configuró un segundo disco virtual dedicado (`USB_RESPUESTA.vdi`, 25 GB) sobre la controladora SAS de la máquina `FORENSIC_10`. Este volumen actúa como unidad de respuesta para depositar herramientas y salidas sin alterar el disco principal del sistema (`FORENSIC_10_disk0.vmdk`). Se inicializó en MBR y se formateó en NTFS con la etiqueta `RESPUESTA (D:)`.
-- **Captura de tráfico de red en modo TAP:** Activación de la intercepción de paquetes desde el exterior del hipervisor mediante comandos `VBoxManage`, garantizando un impacto del 0% en la máquina investigada:
+- **Captura de tráfico de red en modo TAP:** Activación de la intercepción de paquetes desde el exterior del hipervisor mediante comandos `VBoxManage`, sin ejecutar nada dentro de la máquina investigada:
   ```bash
   VBoxManage modifyvm "FORENSIC_10" --nictracefile1 "hashes/red.pcap"
   VBoxManage modifyvm "FORENSIC_10" --nictrace1 on
@@ -88,7 +88,7 @@ flowchart TD
 ### 2.4 Adquisición Forense de la Memoria RAM (En Vivo)
 - **Hora:** 17:29 h · 03/11/2026
 - **Herramienta utilizada:** Volcado de depuración a nivel de hipervisor VirtualBox (`VBoxManage debugvm dumpvmcore`).
-- **Justificación técnica pericial:** Se optó por la extracción desde el hipervisor para garantizar un **impacto nulo (0% de alteración)** en el espacio de usuario del sistema operativo investigado, eliminando el riesgo de sobreescritura de procesos o bloqueos asociados a binarios antiguos de captura en vivo.
+- **Motivo de la técnica:** Se extrajo la memoria desde el hipervisor, sin ejecutar ninguna herramienta de captura dentro del sistema operativo investigado.
 - **Fichero generado:** `hashes/FORENSIC_10-ram.raw` (1.214.117.728 bytes / 1,21 GB).
 - **Hash de integridad SHA-256:**
   `0401711ec86b3cbe66844d451064a0726325230105a0149aef2e7c5ab3a24e90`
@@ -126,7 +126,7 @@ flowchart TD
   <p align="center">
     <img src="capturas/07-comprobacion-cifrado-bitlocker.png" alt="Comprobación de ausencia de cifrado BitLocker" width="650" />
   </p>
-- **Decisión de apagado:** Al confirmarse la ausencia total de cifrado de volumen (lo que descarta el riesgo de bloqueo de particiones tras reinicio), se procedió al **apagado inmediato por hardware virtual (`poweroff`)** a las 18:00 h, garantizando que el sistema operativo no ejecute rutinas de desmontaje ni modifique marcas de tiempo en el disco `.vmdk`.
+- **Decisión de apagado:** Al confirmarse la ausencia total de cifrado de volumen (lo que descarta el riesgo de bloqueo de particiones tras reinicio), se procedió al **apagado inmediato por hardware virtual (`poweroff`)** a las 18:00 h, evitando que el sistema operativo ejecute rutinas de desmontaje ni modifique marcas de tiempo en el disco `.vmdk`.
 - **Cierre de captura de red:** Se detuvo la traza TAP. Fichero consolidado: `hashes/red.pcap` (2.241.370 bytes, SHA-256: `22818ef0752ac4f03bc54c6e1b7802bc6f0ae106f2fd7887e0839853cc0d77f3`).
 - **Fijación de Hash previo del disco original:** Inmediatamente tras el apagado, se calculó el SHA-256 del disco `.vmdk`:
   `f98ca9c5585c0fd6605d3563c0b52d7b9addfa8c3930f0568459722cf49cd6a6`
@@ -266,8 +266,8 @@ Previamente, la perito adquirente había realizado la misma comprobación en su 
 
 ## 5. Conclusiones Periciales de la Fase de Adquisición
 
-1. **Inmutabilidad de la Prueba:** Todas las evidencias fueron adquiridas siguiendo el principio de no alteración y orden de volatilidad estricto. La estación comprometida fue apagada por hardware para asegurar el estado forense exacto de los clusters de disco.
-2. **Trazabilidad Continua:** Se emitió el acta de adquisición pericial y el registro de cadena de custodia de 3 páginas con firmas vectorizadas, formalizando el depósito y traspaso a Eduardo Moreno sin lagunas temporales.
+1. **Integridad de la Prueba:** El volcado de RAM y las imágenes E01 del disco y del pendrive se verificaron con SHA-256 en el manifiesto, y las imágenes E01 también con MD5 y SHA-1 en FTK Imager. La verificación del manifiesto se repitió el 11/11/2026 sin diferencias (28/28). La estación comprometida se apagó de forma forzada desde el hipervisor, sin cierre ordenado del sistema operativo. En la adquisición del pendrive no se conserva constancia de bloqueo de escritura (apartado 6).
+2. **Trazabilidad:** Se emitió el acta de adquisición pericial (rectificada el 11/11/2026) y el registro de cadena de custodia de 3 páginas, en su versión 2 firmada por ambos peritos (apartado 7), que formaliza el depósito y el traspaso a Eduardo Moreno.
 3. **Certificación Criptográfica:** La verificación independiente en el equipo receptor arrojó correspondencia del 100% en todas las sumas SHA-256, garantizando que el material entregado es idéntico al intervenido en la escena para la posterior fase de análisis (UD2).
 
 ---
