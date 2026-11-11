@@ -17,12 +17,12 @@ Este repositorio contiene la memoria técnica, registros de integridad y documen
 
 El procedimiento se ha desarrollado siguiendo el **orden de volatilidad (RFC 3227)** y las normas internacionales de aseguramiento pericial **UNE 71506:2013** e **ISO/IEC 27037:2012**.
 
-### 🏆 Hitos y Métricas de Calidad Obtenidas:
-- **Mínimo Impacto en Espacio de Usuario:** Extracción de memoria RAM física (1,21 GB) realizada a nivel de hipervisor (`debugvm dumpvmcore`), evitando la alteración de procesos volátiles.
-- **Marca de Autoría Verificada:** Localización matemática de la cadena testigo `AFI-NataliaAlejo-20261103` en el offset exacto `276165056` (0x10760000) del volcado de RAM y réplica en disco montado.
-- **Adquisición EWF (E01) sin Errores:** Adquisición física completa del disco de sistema (`FORENSIC_10_disk0.E01` a `.E04`) y del pendrive de la escena (`PENDRIVE_ESCENA.E01` a `.E17`) en FTK Imager v3.4.0.5 arrojando **0 bad sectors** y correspondencia de hashes MD5 y SHA-1 (`Match`).
-- **Verificación Cruzada 100% Exitosa:** Comprobación formal ejecutada en Git Bash por el compañero receptor Eduardo Moreno (`ASUS@LAPTOP-INN5P1GR`): **28/28 ficheros devolvieron `OK` con 0 errores y 0 warnings**.
-- **Cadena de Custodia Cerrada:** Documento pericial de custodia en 3 páginas con doble transferencia formal firmada vectorialmente por ambos peritos.
+### Resultados principales
+- **Memoria RAM:** Extracción de memoria RAM física (1,21 GB) realizada a nivel de hipervisor (`debugvm dumpvmcore`), sin ejecutar herramientas de captura dentro del sistema investigado.
+- **Marca de autoría:** Localización de la cadena testigo `AFI-NataliaAlejo-20261103` en el offset exacto `276165056` (0x10760000) del volcado de RAM y réplica en disco montado.
+- **Imágenes E01:** Adquisición física completa del disco de sistema (`FORENSIC_10_disk0.E01` a `.E04`) y del pendrive de la escena (`PENDRIVE_ESCENA.E01` a `.E17`) en FTK Imager v3.4.0.5 arrojando **0 bad sectors** y correspondencia de hashes MD5 y SHA-1 (`Match`).
+- **Verificación de hashes:** Comprobación ejecutada en Git Bash por el compañero receptor Eduardo Moreno (`ASUS@LAPTOP-INN5P1GR`): **28/28 ficheros devolvieron `OK`**.
+- **Cadena de custodia:** Registro de 3 páginas con transferencia al perito receptor y devolución, firmado por ambos peritos. Sus discrepancias con los ficheros reales se corrigen en la fe de erratas (enlace 6).
 
 ---
 
@@ -59,7 +59,7 @@ afi-ud1-adquisicion/
 └── capturas/               # Evidencias gráficas del procedimiento (13 capturas numeradas)
 ```
 
-> **Aviso de Cumplimiento Anti-Cero:** Siguiendo las directrices normativas de la asignatura, los contenedores binarios pesados (`.raw`, `.pcap`, `.E01`, `.vmdk`) han sido excluidos deliberadamente del repositorio Git mediante un archivo `.gitignore` blindado, alojándose físicamente en el soporte extraíble precintado de custodia entregado a Eduardo Moreno.
+> **Nota:** Siguiendo las instrucciones de la entrega, los ficheros de evidencia (`.raw`, `.pcap`, `.E01`, `.vmdk`) no se suben al repositorio (están excluidos con `.gitignore`) y se conservan en el soporte extraíble precintado de custodia entregado a Eduardo Moreno.
 
 ---
 

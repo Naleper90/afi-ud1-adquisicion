@@ -103,7 +103,7 @@ flowchart TD
 ### 2.5 Recolección de Datos Volátiles de Triaje
 - **Hora:** 17:56 h · 03/11/2026
 - **Herramienta utilizada:** Script pericial oficial de la práctica (`respuesta-en-vivo.ps1`) y comandos nativos del sistema volcados hacia la unidad de respuesta externa `D:\salida\`.
-- **Justificación metodológica (RFC 3227 y mínima alteración):** Siguiendo el principio de mínima alteración de la RFC 3227, se priorizó la ejecución de un triaje ligero por consola junto con la extracción pasiva de memoria RAM completa y el disco físico íntegro en formato E01, frente al despliegue de suites invasivas de espacio de usuario (como agentes pesados de Velociraptor o KAPE en vivo). De este modo se evitó la sobreescritura de sectores no asignados, la alteración del archivo de paginación (`pagefile.sys`) y la polución del registro de Windows durante la recolección, delegando la extracción profunda de artefactos a la fase de análisis post-mortem sobre la copia de trabajo E01.
+- **Alcance:** El triaje se limitó a comandos nativos de consola, ejecutados después de la extracción de la RAM (apartado 2.4) y antes de la adquisición del disco. No se emplearon KAPE ni Velociraptor; las consecuencias de esta decisión se recogen en el apartado 6 (Incidencias y Limitaciones). La extracción profunda de artefactos queda para la fase de análisis sobre la copia de trabajo E01.
 - **Artefactos adquiridos:**
   - `01-fecha.txt`: Registro de fecha y hora local del sistema.
   - `06-netstat.txt`: Conexiones TCP/UDP activas y mapeo de procesos con PIDs (`netstat -ano`).
@@ -287,7 +287,7 @@ Se dejan aquí, aunque no afecten a la integridad de las evidencias, las inciden
 
 ## 7. Fe de Erratas del Registro de Custodia
 
-El `registro-custodia.pdf` ya estaba firmado por ambos peritos cuando se detectaron los siguientes errores de transcripción. Para no alterar un documento firmado, **no se modifica el PDF** y se deja constancia aquí de los valores correctos, contrastados con los ficheros reales y con los registros de FTK Imager:
+El `registro-custodia.pdf` ya estaba firmado por ambos peritos cuando se detectaron las siguientes discrepancias entre sus valores y los ficheros reales. Para no alterar un documento firmado, **no se modifica el PDF** y se deja constancia aquí de los valores correctos, contrastados con los ficheros reales y con los registros de FTK Imager:
 
 | Campo del registro de custodia | Valor que aparece en el PDF | Valor correcto | Fuente de verificación |
 | :--- | :--- | :--- | :--- |
