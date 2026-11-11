@@ -21,7 +21,7 @@ El procedimiento se ha desarrollado en estricto cumplimiento del **orden de vola
 - **Impacto 0% en Espacio de Usuario:** Extracción de memoria RAM física (1,21 GB) realizada a nivel de hipervisor (`debugvm dumpvmcore`), evitando la alteración de procesos volátiles.
 - **Marca de Autoría Verificada:** Localización matemática de la cadena testigo `AFI-NataliaAlejo-20261103` en el offset exacto `276165056` (0x10760000) del volcado de RAM y réplica en disco montado.
 - **Adquisición EWF (E01) sin Errores:** Adquisición física completa del disco de sistema (`FORENSIC_10_disk0.E01` a `.E04`) y del pendrive de la escena (`PENDRIVE_ESCENA.E01` a `.E17`) en FTK Imager v3.4.0.5 arrojando **0 bad sectors** y correspondencia de hashes MD5 y SHA-1 (`Match`).
-- **Verificación Cruzada 100% Exitosa:** Comprobación formal ejecutada en Git Bash por el compañero receptor Eduardo Moreno (`ASUS@LAPTOP-INN5P1GR`): **25/25 ficheros devolvieron `OK` con 0 errores y 0 warnings**.
+- **Verificación Cruzada 100% Exitosa:** Comprobación formal ejecutada en Git Bash por el compañero receptor Eduardo Moreno (`ASUS@LAPTOP-INN5P1GR`): **28/28 ficheros devolvieron `OK` con 0 errores y 0 warnings**.
 - **Cadena de Custodia Cerrada:** Documento pericial de custodia en 3 páginas con doble transferencia formal firmada vectorialmente por ambos peritos.
 
 ---
@@ -46,7 +46,7 @@ El repositorio respeta escrupulosamente la jerarquía requerida por la cátedra 
 ```text
 afi-ud1-adquisicion/
 ├── README.md               # Portada oficial, resumen ejecutivo y enlaces periciales
-├── notas-de-trabajo.md     # Cuaderno de bitácora paso a paso con las 11 capturas incrustadas
+├── notas-de-trabajo.md     # Cuaderno de bitácora paso a paso con las 13 capturas incrustadas, incidencias y fe de erratas
 ├── acta-adquisicion.pdf    # Acta oficial de intervención forense debidamente cumplimentada y firmada
 ├── registro-custodia.pdf   # Registro de cadena de custodia de 3 páginas con doble transferencia y firmas
 ├── hashes/                 # Manifiesto hashes.sha256, scripts de respuesta en vivo y logs FTK
@@ -56,7 +56,7 @@ afi-ud1-adquisicion/
 │   ├── FORENSIC_10_disk0.E01.txt # Log oficial de adquisición de disco de FTK Imager
 │   ├── PENDRIVE_ESCENA.E01.txt   # Log oficial de adquisición de pendrive de FTK Imager
 │   └── Logs/               # Registros del hipervisor (VBox.log y VBoxHardening.log)
-└── capturas/               # Evidencias gráficas del procedimiento (11 capturas numeradas)
+└── capturas/               # Evidencias gráficas del procedimiento (13 capturas numeradas)
 ```
 
 > **Aviso de Cumplimiento Anti-Cero:** Siguiendo las directrices normativas de la asignatura, los contenedores binarios pesados (`.raw`, `.pcap`, `.E01`, `.vmdk`) han sido excluidos deliberadamente del repositorio Git mediante un archivo `.gitignore` blindado, alojándose físicamente en el soporte extraíble precintado de custodia entregado a Eduardo Moreno.
@@ -65,8 +65,9 @@ afi-ud1-adquisicion/
 
 ## 🔗 Enlaces Directos a los Documentos Clave
 
-1. 📝 **[Cuaderno de Notas de Trabajo (Bitácora Completa)](./notas-de-trabajo.md)**: Registro exhaustivo con cronología, comandos ejecutados, justificación de la RFC 3227 y las 11 capturas de pantalla.
+1. 📝 **[Cuaderno de Notas de Trabajo (Bitácora Completa)](./notas-de-trabajo.md)**: Registro exhaustivo con cronología, comandos ejecutados, justificación de la RFC 3227 y las 13 capturas de pantalla.
 2. 📄 **[Acta Formal de Adquisición Forense](./acta-adquisicion.pdf)**: Documento de apertura y formalización pericial firmado digitalmente.
 3. 🤝 **[Registro de Cadena de Custodia (3 Páginas)](./registro-custodia.pdf)**: Fichas técnicas de evidencias, transferencia de depósito al perito receptor Eduardo Moreno Rodríguez y devolución de cierre.
 4. 🔍 **[Manifiesto de Integridad Criptográfica](./hashes/hashes.sha256)**: Tabla de sumas de comprobación SHA-256 en rutas relativas.
-5. 📸 **[Galería de Evidencias Gráficas](./capturas/)**: Archivo visual con las 11 capturas periciales del caso.
+5. 📸 **[Galería de Evidencias Gráficas](./capturas/)**: Archivo visual con las 13 capturas periciales del caso.
+6. ✏️ **[Incidencias, Limitaciones y Fe de Erratas](./notas-de-trabajo.md#6-incidencias-y-limitaciones)**: Registro de las incidencias del procedimiento y de las correcciones al registro de custodia firmado (apartados 6 y 7 de las notas).

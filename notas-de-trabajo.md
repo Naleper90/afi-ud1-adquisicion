@@ -38,14 +38,14 @@ flowchart TD
     F --> G["6. Comprobación BitLocker y Apagado Forzado"]
     G --> H["7. Adquisición Post-Mortem Disco E01 (FTK)"]
     H --> I["8. Adquisición Física Pendrive E01 (FTK)"]
-    I --> J["9. Verificación Cruzada Hashes (25/25 OK)"]
+    I --> J["9. Verificación Cruzada Hashes (28/28 OK)"]
 ```
 
 ---
 
 ### 2.1 Preparación del Entorno y Documentación Previa de la Evidencia Física
 - **Hora:** 15:30 h · 03/11/2026
-- **Acción:** Inspección visual y documentación pericial del pendrive encontrado antes de cualquier conexión. Se fotografiaron sus características físicas (cuerpo giratorio rojo y metálico) y se extrajeron sus identificadores unívocos de hardware en la estación pericial forense: fabricante genérico (`General UDisk USB Device`), número de serie `2107221816162859250002` y formato de archivos `exFAT`.
+- **Acción:** Inspección visual y documentación pericial del pendrive encontrado antes de conectarlo a la máquina investigada. Se fotografiaron sus características físicas (cuerpo giratorio rojo y metálico) y se extrajeron sus identificadores unívocos de hardware en la estación pericial forense: fabricante genérico (`General UDisk USB Device`), número de serie `2107221816162859250002` y formato de archivos `exFAT`.
 - **Evidencias gráficas:**
   <p align="center">
     <img src="capturas/01-pendrive-foto.png" alt="Inspección física del pendrive de la escena" width="550" />
@@ -130,6 +130,13 @@ flowchart TD
 - **Cierre de captura de red:** Se detuvo la traza TAP. Fichero consolidado: `hashes/red.pcap` (2.241.370 bytes, SHA-256: `22818ef0752ac4f03bc54c6e1b7802bc6f0ae106f2fd7887e0839853cc0d77f3`).
 - **Fijación de Hash previo del disco original:** Inmediatamente tras el apagado, se calculó el SHA-256 del disco `.vmdk`:
   `f98ca9c5585c0fd6605d3563c0b52d7b9addfa8c3930f0568459722cf49cd6a6`
+- **Recomprobación del hash tras la adquisición:** El 11/11/2026 se volvió a calcular el SHA-256 del disco `.vmdk` con el equipo investigado apagado, para comprobar que nada había escrito en el original durante las adquisiciones:
+  ```powershell
+  Get-FileHash "C:\Users\esana\VirtualBox VMs\FORENSIC_10\FORENSIC_10_disk0.vmdk" -Algorithm SHA256
+  ```
+  - **Resultado:** `F98CA9C5585C0FD6605D3563C0B52D7B9ADDFA8C3930F0568459722CF49CD6A6`, **idéntico** al calculado inmediatamente tras el apagado.
+  - **Fecha de modificación del fichero:** 03/11/2026 18:00:09 (la hora del apagado), sin cambios posteriores. Tamaño: 13.286.047.744 bytes.
+  - **Conclusión:** el disco original no ha sido modificado desde el apagado.
 
 ---
 
@@ -184,6 +191,15 @@ flowchart TD
   <p align="center">
     <img src="capturas/10-adquisicion-pendrive-ftk-verificada.png" alt="Adquisición física de pendrive en FTK Imager con 0 bad sectors" width="650" />
   </p>
+- **Bloqueo de escritura:** No se conserva constancia (ni registro, ni captura, ni script) de que se activara un bloqueo de escritura antes de conectar el pendrive para su adquisición. Véase el apartado 6.
+- **Verificación de la marca en la imagen del pendrive:**
+  - **Hora:** 13:43 h · 11/11/2026
+  - **Acción:** Apertura de `PENDRIVE_ESCENA.E01` en FTK Imager 3.4.0.5 con `File → Add Evidence Item → Image File`, que muestra el contenido de la imagen sin montarla y sin escribir en ella. Se localizó el fichero testigo `marca-nataliaalejo.txt` en la raíz del volumen `EVIDENCIA [exFAT]`, y el visor de contenido muestra la cadena `AFI-NataliaAlejo-20261103`.
+  - **Nota:** Se intentó primero montar la imagen con `File → Image Mounting`, pero FTK Imager devolvió el error `Add drive failed`. Se optó por la vía anterior (ver apartado 6).
+- **Evidencia gráfica:**
+  <p align="center">
+    <img src="capturas/12-marca-en-pendrive-e01.png" alt="Marca pericial localizada en la raíz de la imagen del pendrive en FTK Imager" width="650" />
+  </p>
 
 ---
 
@@ -224,7 +240,7 @@ c1cd05171a868b78803139384df1f46add3a8dde03506dabb0fb91ce1440dec6 *PENDRIVE_ESCEN
 
 ---
 
-## 4. Verificación de Integridad Cruzada en Pareja (25/25 OK)
+## 4. Verificación de Integridad Cruzada en Pareja (28/28 OK)
 
 Se realizó la verificación formal de todas las evidencias volcadas sobre el soporte de custodia USB en la estación de trabajo de **Eduardo Moreno Rodríguez** (`ASUS@LAPTOP-INN5P1GR`), ejecutando el comando de comprobación en entorno Git Bash:
 
@@ -232,10 +248,18 @@ Se realizó la verificación formal de todas las evidencias volcadas sobre el so
 cd /e/hashes && sha256sum -c hashes.sha256
 ```
 
-- **Resultado:** **25/25 ficheros devolvieron `OK` con 0 errores y 0 avisos de advertencia**, ratificando la perfecta correspondencia matemática y la ausencia total de corrupción de datos durante el traspaso físico de la prueba.
+- **Resultado:** **28/28 ficheros devolvieron `OK` con 0 errores y 0 avisos de advertencia**, ratificando la perfecta correspondencia matemática y la ausencia total de corrupción de datos durante el traspaso físico de la prueba.
 
 <p align="center">
-  <img src="capturas/11-verificacion-hashes-sha256-ok.png" alt="Verificación exitosa de los 25 hashes SHA-256 en máquina de destino" width="700" />
+  <img src="capturas/13-verificacion-hashes-receptor.png" alt="Verificación de los 28 hashes SHA-256 en la estación del perito receptor" width="700" />
+</p>
+
+> **Nota sobre la captura:** La captura anterior es la comprobación del perito receptor, Eduardo Moreno, en su propia estación (`ASUS@LAPTOP-INN5P1GR`, carpeta `/e/hashes`), realizada durante la transferencia 1 del registro de custodia (05/11/2026, 13:41 h). Devolvió `OK` en las 28 líneas del manifiesto.
+
+Previamente, la perito adquirente había realizado la misma comprobación en su propia estación (`esana@Natalia`, carpeta `/d/hashes`), con el mismo resultado:
+
+<p align="center">
+  <img src="capturas/11-verificacion-hashes-sha256-ok.png" alt="Verificación de los 28 hashes SHA-256 en la estación de la perito adquirente" width="700" />
 </p>
 
 ---
@@ -245,3 +269,57 @@ cd /e/hashes && sha256sum -c hashes.sha256
 1. **Inmutabilidad de la Prueba:** Todas las evidencias fueron adquiridas siguiendo el principio de no alteración y orden de volatilidad estricto. La estación comprometida fue apagada por hardware para asegurar el estado forense exacto de los clusters de disco.
 2. **Trazabilidad Continua:** Se emitió el acta de adquisición pericial y el registro de cadena de custodia de 3 páginas con firmas vectorizadas, formalizando el depósito y traspaso a Eduardo Moreno sin lagunas temporales.
 3. **Certificación Criptográfica:** La verificación independiente en el equipo receptor arrojó correspondencia del 100% en todas las sumas SHA-256, garantizando que el material entregado es idéntico al intervenido en la escena para la posterior fase de análisis (UD2).
+
+---
+
+## 6. Incidencias y Limitaciones
+
+Se dejan aquí, aunque no afecten a la integridad de las evidencias, las incidencias y las limitaciones del procedimiento:
+
+1. **Triaje sin KAPE ni Velociraptor:** El triaje en vivo se realizó con el script `respuesta-en-vivo.ps1` y comandos nativos del sistema (apartado 2.5), sin utilizar KAPE ni un recolector offline de Velociraptor. Como consecuencia, no se recolectó la tabla de ficheros `$MFT` en el triaje y **no se ha comprobado la marca en el triaje**. La marca sí se ha verificado en la RAM (apartado 2.4), en el disco (apartado 2.7) y en el pendrive (apartado 2.8).
+2. **Volcado de RAM desde el hipervisor:** La memoria se adquirió con `VBoxManage debugvm dumpvmcore` en lugar de con una herramienta ejecutada dentro de la máquina (como DumpIt), por la justificación técnica recogida en el apartado 2.4.
+3. **Error al montar la imagen del pendrive:** Al intentar montar `PENDRIVE_ESCENA.E01` con `File → Image Mounting` en FTK Imager, el programa devolvió `Add drive failed`. No se insistió en el montaje: se consultó el contenido de la imagen con `File → Add Evidence Item`, que la abre en modo lectura (apartado 2.8).
+4. **Reconexión del pendrive original:** El 11/11/2026, entre las 13:31 y las 13:41 h, durante la revisión del trabajo, se conectó de nuevo el pendrive original a la estación **sin bloqueo de escritura**, únicamente para consultar su contenido. Se listaron sus ficheros sin abrirlos, copiarlos ni modificarlos. Contenía `marca-nataliaalejo.txt` (30 bytes, creado el 03/11/2026 a las 16:09) y la carpeta de sistema `System Volume Information` (creada el 03/11/2026 a las 14:40, anterior a la documentación del apartado 2.1; el historial USB de Windows registra la primera conexión del pendrive a la estación de la perito el 03/11/2026 a las 14:37 h). **No existe ningún fichero con fecha de creación o modificación del 11/11/2026.** La evidencia de referencia es la imagen E01 verificada, no el soporte original.
+5. **Bloqueo de escritura del pendrive sin constancia:** La adquisición del pendrive (apartado 2.8) exigía activar y comprobar un bloqueo de escritura antes de conectarlo. **No se conserva constancia de que se hiciera**: no existe `bloqueo-usb.log` ni captura del estado `PROTEGIDO`, y una búsqueda del script y de otras herramientas de bloqueo en la estación de la perito (11/11/2026) no encontró ningún resultado. Por ello, la adquisición debe considerarse realizada **sin bloqueo de escritura verificado**. Como datos comprobados que lo matizan, sin sustituir al bloqueo: (a) la imagen E01 quedó verificada con MD5 y SHA-1 (`Match`) y 0 sectores defectuosos; (b) el listado del pendrive original del 11/11/2026 no muestra ningún fichero con fecha posterior a la marca del 03/11/2026 (16:09 h), y `System Volume Information` es anterior a la documentación del apartado 2.1 (03/11/2026, 14:40 h).
+6. **El `.vmdk` no forma parte de la entrega:** El disco `.vmdk` original no se entrega en el soporte de custodia, por lo que no figura en `hashes.sha256`, que contiene los 28 ficheros entregados. Su contenido está en la imagen E01 del disco, verificada con MD5 y SHA-1 (`Match`); su SHA-256 se conserva en el apartado 2.6 y se recomprobó el 11/11/2026.
+
+---
+
+## 7. Fe de Erratas del Registro de Custodia
+
+El `registro-custodia.pdf` ya estaba firmado por ambos peritos cuando se detectaron los siguientes errores de transcripción. Para no alterar un documento firmado, **no se modifica el PDF** y se deja constancia aquí de los valores correctos, contrastados con los ficheros reales y con los registros de FTK Imager:
+
+| Campo del registro de custodia | Valor que aparece en el PDF | Valor correcto | Fuente de verificación |
+| :--- | :--- | :--- | :--- |
+| SHA-256 del `.vmdk` previo | `da15d0eb…` | `f98ca9c5585c0fd6605d3563c0b52d7b9addfa8c3930f0568459722cf49cd6a6` | Apartado 2.6 y recomprobación del 11/11/2026 |
+| Tamaño de `FORENSIC_10-ram.raw` | 1.298.544.640 bytes | 1.214.117.728 bytes | Fichero original y apartado 2.4 |
+| Tamaño de `red.pcap` | 2.352.128 bytes | 2.241.370 bytes | Fichero original y apartado 2.6 |
+| SHA-1 de la imagen del disco | `cb255554…` | `5d36b49702c656dbb3997b77b88df2bc3c5a68f6` | `FORENSIC_10_disk0.E01.txt` |
+| SHA-1 de la imagen del pendrive | `188fc836…` | `c1870f834ae3d71afc72252b7132a5792ae06471` | `PENDRIVE_ESCENA.E01.txt` |
+| Fecha y hora de la Transferencia 0 | 03/11/2026 · 18:00 h | Volcado de RAM y apagado: 03/11/2026 (17:29–18:00 h). Imágenes E01: 04/11/2026 (21:28–23:35 h) | Apartados 2.4, 2.6, 2.7 y 2.8 |
+| Capacidad del pendrive | 26,2 GB | 29,29 GB (los 26,2 GB son el tamaño total de los segmentos E01) | Apartado 2.1 y `PENDRIVE_ESCENA.E01.txt` |
+| Orden de las fases en la tabla | Triaje en vivo antes que la RAM | RAM (17:29 h) antes que el triaje (17:56 h) | Apartados 2.4 y 2.5 |
+| Número de registros del manifiesto `hashes.sha256` | 25 registros | 28 registros | `hashes/hashes.sha256` |
+| Resultado de la verificación del perito receptor (transferencia 1) | 25/25 ficheros `OK` | 28/28 ficheros `OK` | Apartado 4 y captura 13 |
+| Garantía de inmutabilidad (hoja 1, apartado 2) | «…mediante bloqueadores de escritura…» | No se conserva constancia de que se utilizara bloqueo de escritura en la adquisición del pendrive | Apartado 6, incidencia 5 |
+
+El resto de los datos del registro (identificadores de evidencia, SHA-256 de los ficheros y transferencias firmadas) es correcto y coincide con `hashes/hashes.sha256`.
+
+**Rectificación del acta de adquisición:** El `acta-adquisicion.pdf` se rectificó el 11/11/2026 (consta en su cabecera, y sustituye a la de 04/11/2026) para incorporar el apartado 2, «Cronología de Acciones», con la hora de cada paso y la mención del disco virtual utilizado como unidad de respuesta. Las evidencias, las herramientas y los hashes del resto del acta no han cambiado.
+
+---
+
+## 8. Verificación Posterior de Integridad (11/11/2026)
+
+- **Fecha:** 11/11/2026, con posterioridad a la devolución del soporte de custodia.
+- **Acción:** Se volvió a comprobar la integridad de las dos copias de las evidencias: el soporte de custodia devuelto (unidad `D:`, `Alejo 1Tb`) y la copia conservada en la estación de la perito (`Desktop\afi-ud1-adquisicion\hashes`). Para cada copia se leyó `hashes.sha256`, se calculó con `Get-FileHash -Algorithm SHA256` el hash de cada fichero y se comparó con el esperado. La operación es de solo lectura.
+- **Resultados:**
+
+| Copia | Inicio | Fin | Resultado |
+| :--- | :---: | :---: | :--- |
+| Soporte de custodia (`D:\hashes`) | 13:56 h | 14:11 h | **28 `OK`, 0 fallos** |
+| Estación de la perito (`Desktop`) | 14:11 h | 14:12 h | **28 `OK`, 0 fallos** |
+
+- **Manifiesto:** el propio `hashes.sha256` es idéntico en ambas copias (SHA-256: `33d46a9faa5c59d0893f9dcfa69cea1e61398b31bd6a561a17a9e6d63556ee6f`).
+- **Conclusión:** las evidencias del soporte de custodia devuelto y las conservadas en la estación de la perito son idénticas entre sí y coinciden con el manifiesto, por lo que no han sufrido alteración desde su adquisición.
+- **Imagen maestra y copia de trabajo:** A fecha de 11/11/2026, y tras verificar la identidad de ambas copias, se designa como **imagen maestra** la conservada en el soporte de custodia (`D:`), que permanece sin modificar, y como **copia de trabajo** para la UD2 la conservada en la estación de la perito. Las imágenes fueron generadas originalmente en la estación de la perito por FTK Imager y volcadas después al soporte de custodia.
